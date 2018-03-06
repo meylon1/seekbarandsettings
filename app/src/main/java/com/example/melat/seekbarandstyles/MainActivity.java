@@ -2,9 +2,13 @@ package com.example.melat.seekbarandstyles;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.preference.PreferenceManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
 
 public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
     private TextView textView1;
@@ -50,6 +54,39 @@ public class MainActivity extends Activity implements SeekBar.OnSeekBarChangeLis
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar1) {
+
+    }
+
+
+    public void displaySettings(View view) {
+
+
+
+        startActivity( new Intent(this, SettingsActivity.class));
+
+
+
+    }
+
+
+
+    public void readSettings(View view) {
+
+
+
+        //read the value (stored in strings.xml)
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String setting1 = prefs.getString("example_text", "Joe Smith");
+
+
+
+        Toast.makeText(this, setting1, Toast.LENGTH_LONG).show();
+
+
+
+
 
     }
 
